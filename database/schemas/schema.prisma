@@ -1,0 +1,169 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  super_admin
+  director
+  teacher
+  student
+  parent
+}
+
+enum Gender {
+  male
+  female
+}
+
+model User {
+  id           String    @id @default(uuid()) @db.Uuid
+  username     String    @unique @db.VarChar(50)
+  email        String    @unique @db.VarChar(255)
+  phone        String?   @db.VarChar(20)
+  passwordHash String    @map("password_hash") @db.VarChar(255)
+  role         UserRole
+  language     String    @default("ar") @db.VarChar(10)
+  theme        String    @default("pure_light") @db.VarChar(50)
+  isActive     Boolean   @default(true) @map("is_active")
+  lastLogin    DateTime? @map("last_login") @db.Timestamptz
+  createdAt    DateTime  @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt    DateTime  @default(now()) @updatedAt @map("updated_at") @db.Timestamptz
+
+  student      Student?
+  teacher      Teacher?
+  parent       Parent?
+
+  @@map("users")
+}
+
+model Student {
+  id             String   @id @map("id") @db.Uuid
+  user           User     @relation(fields: [id], references: [id], onDelete: Cascade)
+  studentCode    String   @unique @map("student_code") @db.VarChar(20)
+  firstNameAr    String   @map("first_name_ar") @db.VarChar(100)
+  lastNameAr     String   @map("last_name_ar") @db.VarChar(100)
+  firstNameFr    String?  @map("first_name_fr") @db.VarChar(100)
+  lastNameFr     String?  @map("last_name_fr") @db.VarChar(100)
+  birthDate      DateTime @map("birth_date") @db.Date
+  birthPlace     String?  @map("birth_place") @db.VarChar(100)
+  gender         Gender?
+  academicYear   String   @map("academic_year") @db.VarChar(9)
+  enrollmentDate DateTime @map("enrollment_date") @db.Date
+  createdAt      DateTime @default(now()) @map("created_at") @db.Timestamptz
+  
+  // Relations
+  grades         Grade[]
+  appeals        GradeAppeal[]
+  class          Class?    @relation(fields: [classId], references: [id])
+  classId        String?   @map("class_id") @db.Uuid
+
+  @@map("students")
+}
+
+model AcademicYear {
+  id        String   @id @default(uuid()) @db.Uuid
+  name      String   @unique @db.VarChar(20) // e.g. "2024-2025"
+  startDate DateTime @map("start_date") @db.Date
+  endDate   DateTime @map("end_date") @db.Date
+  isCurrent Boolean  @default(false) @map("is_current")
+
+  classes   Class[]
+
+  @@map("academic_years")
+}
+
+model Class {
+  id             String       @id @default(uuid()) @db.Uuid
+  name           String       @db.VarChar(50) // e.g. "1AS-1"
+  level          String       @db.VarChar(20) // e.g. "1AS"
+  academicYearId String       @map("academic_year_id") @db.Uuid
+  academicYear   AcademicYear @relation(fields: [academicYearId], references: [id])
+  mainTeacherId  String?      @map("main_teacher_id") @db.Uuid
+  
+  students       Student[]
+  subjects       ClassSubject[]
+
+  @@map("classes")
+}
+
+model Subject {
+  id          String   @id @default(uuid()) @db.Uuid
+  code        String   @unique @db.VarChar(20) // e.g. "MATH", "PHY"
+  nameAr      String   @map("name_ar") @db.VarChar(100)
+  nameFr      String?  @map("name_fr") @db.VarChar(100)
+  
+  classes     ClassSubject[]
+
+  @@map("subjects")
+}
+
+model ClassSubject {
+  id          String   @id @default(uuid()) @db.Uuid
+  classId     String   @map("class_id") @db.Uuid
+  class       Class    @relation(fields: [classId], references: [id], onDelete: Cascade)
+  subjectId   String   @map("subject_id") @db.Uuid
+  subject     Subject  @relation(fields: [subjectId], references: [id])
+  teacherId   String?  @map("teacher_id") @db.Uuid
+  teacher     Teacher? @relation(fields: [teacherId], references: [id])
+  coefficient Int      @default(1)
+
+  @@unique([classId, subjectId])
+  @@map("class_subjects")
+}
+
+model Teacher {
+  id   String @id @map("id") @db.Uuid
+  user User   @relation(fields: [id], references: [id], onDelete: Cascade)
+
+  // Relations
+  grades          Grade[]
+  teachingClasses ClassSubject[]
+
+  @@map("teachers")
+}
+
+model Parent {
+  id   String @id @map("id") @db.Uuid
+  user User   @relation(fields: [id], references: [id], onDelete: Cascade)
+  
+  @@map("parents")
+}
+
+model Grade {
+  id          String   @id @default(uuid()) @db.Uuid
+  studentId   String   @map("student_id") @db.Uuid
+  student     Student  @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  teacherId   String   @map("teacher_id") @db.Uuid
+  teacher     Teacher  @relation(fields: [teacherId], references: [id])
+  // Subject relation would go here
+  examType    String   @map("exam_type") @db.VarChar(50) 
+  period      String   @map("period") @db.VarChar(20)
+  grade       Decimal  @db.Decimal(5,2)
+  coefficient Int      @default(1)
+  comment     String?
+  enteredAt   DateTime @default(now()) @map("entered_at") @db.Timestamptz
+
+  appeals     GradeAppeal[]
+
+  @@map("grades")
+}
+
+model GradeAppeal {
+  id         String    @id @default(uuid()) @db.Uuid
+  gradeId    String    @map("grade_id") @db.Uuid
+  grade      Grade     @relation(fields: [gradeId], references: [id], onDelete: Cascade)
+  studentId  String    @map("student_id") @db.Uuid
+  student    Student   @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  reason     String
+  status     String    @default("pending") @db.VarChar(20)
+  resolution String?
+  createdAt  DateTime  @default(now()) @map("created_at") @db.Timestamptz
+  deadline   DateTime  @map("deadline_date") @db.Date
+
+  @@map("grade_appeals")
+}

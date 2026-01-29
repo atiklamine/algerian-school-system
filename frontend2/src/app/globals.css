@@ -1,0 +1,18 @@
+/* Global styles if needed */
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Improve Mobile Responsiveness - Remove 300ms tap delay */
+a, button, input, label, select, textarea, [role="button"] {
+  touch-action: manipulation;
+}
+
+/* iOS Click Fix */
+label, [type="checkbox"], [type="radio"] {
+  cursor: pointer;
+}

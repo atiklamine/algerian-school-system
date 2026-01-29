@@ -1,0 +1,215 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+model User {
+  id               String         @id @default(uuid())
+  email            String         @unique
+  username         String         @unique
+  passwordHash     String
+  role             Role           @default(Student)
+  
+  // Profile Information
+  firstName        String?        // French/English first name
+  lastName         String?        // French/English last name
+  firstNameAr      String?        // Arabic first name (الاسم)
+  lastNameAr       String?        // Arabic last name (اللقب)
+  phone            String?
+  address          String?
+  dateOfBirth      DateTime?
+  avatar           String?        // URL to avatar image
+  
+  // Relations
+  classId          String?
+  class            Class?         @relation("StudentClass", fields: [classId], references: [id])
+  classesAsMainTeacher Class[]    @relation("MainTeacher")
+  classSubjects        ClassSubject[] // Teacher for a subject in a class
+  gradesGiven          Grade[]        @relation("TeacherGrades")
+  gradesReceived       Grade[]        @relation("StudentGrades")
+
+  createdAt        DateTime       @default(now())
+  updatedAt        DateTime       @updatedAt
+}
+
+enum Role {
+  Administrator
+  Director
+  Manager
+  Teacher
+  Student
+}
+
+model AcademicYear {
+  id        String   @id @default(uuid())
+  name      String   // e.g., "2024-2025"
+  startDate DateTime
+  endDate   DateTime
+  isCurrent Boolean  @default(false)
+  classes   Class[]
+  periods   Period[] // Academic periods (trimesters)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Subject {
+  id            String         @id @default(uuid())
+  code          String         @unique
+  nameAr        String
+  nameFr        String
+  classes       ClassSubject[]
+  majorSubjects MajorSubject[]
+  grades        Grade[]
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+}
+
+model Class {
+  id             String         @id @default(uuid())
+  name           String
+  majorId        String         // Replaces 'level' string
+  major          Major          @relation(fields: [majorId], references: [id])
+  academicYearId String
+  academicYear   AcademicYear   @relation(fields: [academicYearId], references: [id])
+  mainTeacherId  String?
+  mainTeacher    User?          @relation("MainTeacher", fields: [mainTeacherId], references: [id])
+  students       User[]         @relation("StudentClass")
+  subjects       ClassSubject[]
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+}
+
+model ClassSubject {
+  id          String   @id @default(uuid())
+  classId     String
+  class       Class    @relation(fields: [classId], references: [id])
+  subjectId   String
+  subject     Subject  @relation(fields: [subjectId], references: [id])
+  coefficient Int
+  teacherId   String?
+  teacher     User?    @relation(fields: [teacherId], references: [id])
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@unique([classId, subjectId])
+}
+
+model Grade {
+  id          String    @id @default(uuid())
+  studentId   String
+  student     User      @relation("StudentGrades", fields: [studentId], references: [id])
+  teacherId   String
+  teacher     User      @relation("TeacherGrades", fields: [teacherId], references: [id])
+  subjectId   String
+  subject     Subject   @relation(fields: [subjectId], references: [id])
+  
+  // DEPRECATED: Kept for backward compatibility during migration
+  examType    String?
+  period      String?
+  
+  // NEW: References to configuration models
+  examTypeId  String?
+  examTypeRef ExamType? @relation(fields: [examTypeId], references: [id])
+  periodId    String?
+  periodRef   Period?   @relation(fields: [periodId], references: [id])
+  
+  grade       Float
+  coefficient Int
+  comment     String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+// Exam Type Configuration (e.g., Devoir, Composition, Contrôle)
+// Exam Type Configuration (e.g., Devoir, Composition, Contrôle)
+model Level {
+  id        String   @id @default(uuid())
+  name      String   @unique
+  majors    Major[]
+}
+
+model Major {
+  id        String         @id @default(uuid())
+  name      String
+  levelId   String
+  level     Level          @relation(fields: [levelId], references: [id])
+  subjects  MajorSubject[]
+  classes   Class[]
+  @@unique([name, levelId])
+}
+
+model MajorSubject {
+  id          String   @id @default(uuid())
+  majorId     String
+  major       Major    @relation(fields: [majorId], references: [id])
+  subjectId   String
+  subject     Subject  @relation(fields: [subjectId], references: [id])
+  coefficient Int
+  @@unique([majorId, subjectId])
+}
+
+model ExamType {
+  id        String   @id @default(uuid())
+  code      String   @unique // e.g., "DEVOIR_1", "COMPOSITION"
+  nameAr    String   // Arabic name
+  nameFr    String   // French name
+  nameEn    String   // English name
+  nameZgh   String   // Tamazight name
+  isActive  Boolean  @default(true)
+  grades    Grade[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// Academic Period Configuration (e.g., Trimestre 1, 2, 3)
+model Period {
+  id              String       @id @default(uuid())
+  code            String       @unique // e.g., "TRIM_1", "TRIM_2"
+  nameAr          String       // Arabic name
+  nameFr          String       // French name
+  nameEn          String       // English name
+  nameZgh         String       // Tamazight name
+  startDate       DateTime
+  endDate         DateTime
+  academicYearId  String
+  academicYear    AcademicYear @relation(fields: [academicYearId], references: [id])
+  isActive        Boolean      @default(true)
+  grades          Grade[]
+  createdAt       DateTime     @default(now())
+  updatedAt       DateTime     @updatedAt
+}
+
+// Permission System for Role-Based Access Control (RBAC)
+model Permission {
+  id          String           @id @default(uuid())
+  code        String           @unique // e.g., "manage_users", "enter_grades"
+  nameEn      String           // English name
+  nameAr      String           // Arabic name
+  nameFr      String           // French name
+  category    String           // Category: "users", "classes", "grades", "settings"
+  description String?
+  roles       RolePermission[]
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
+}
+
+model RolePermission {
+  id           String     @id @default(uuid())
+  role         Role
+  permissionId String
+  permission   Permission @relation(fields: [permissionId], references: [id], onDelete: Cascade)
+  createdAt    DateTime   @default(now())
+  
+  @@unique([role, permissionId])
+}
