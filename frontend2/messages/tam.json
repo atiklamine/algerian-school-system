@@ -183,5 +183,16 @@
         "logging_in": "La yettnekcam daxel...",
         "login_failed_creds": "Ur yezmir ara ad yekcem. Ssenqed isalan-ik.",
         "login_failed_try_again": "Ur yezmir ara ad yekcem. Ereḍ tikkelt nniḍen."
+    },
+    "about": {
+        "title": "Ɣef Scholara",
+        "description": "Scholara d unagraw n usefrek n yiɣerbazen n lezzayer yettwafesren i wakken ad ishel axeddim n uselmed d ukayad akraḍyuran d usefrek n yinelmaden.",
+        "creator_title": "Ɣef Win i t-id-isunfan",
+        "creator_name": "Atik Lamine",
+        "creator_description": "D amsekni n yiseɣzanen i iḥemmlen aselmeḍ d usnulfu s ttawilat n uweb amaynut d tesnallit tamaselselt. Ixeddem iwakken ad yebnu ttawilat ijeḥden i yiɣerbazen.",
+        "contact_me": "Meslay-iyi-d",
+        "email": "atiklamine@gmail.com",
+        "availability_title": "Axeddim si lbeɛid",
+        "availability_description": "Llan daɣen ttawilat n uxeddim si lbeɛid iwakken ad bnuɣ ttawilat nniḍen yecban wagi s ttawilat n AI d modern tech stacks."
     }
 }

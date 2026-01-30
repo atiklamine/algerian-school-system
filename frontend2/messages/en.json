@@ -203,5 +203,16 @@
         "logging_in": "Logging in...",
         "login_failed_creds": "Login failed. Please check your credentials.",
         "login_failed_try_again": "Login failed. Please try again."
+    },
+    "about": {
+        "title": "About Scholara",
+        "description": "Scholara is a high-end school management system designed specifically for the Algerian educational context. It streamlines the trimestriel (quarterly) evaluation process, student management, and academic reporting.",
+        "creator_title": "About the Creator",
+        "creator_name": "Atik Lamine",
+        "creator_description": "A passionate software engineer specializing in modern web technologies and AI-powered development. Dedicated to building efficient, premium solutions for educational institutions.",
+        "contact_me": "Contact Me",
+        "email": "atiklamine@gmail.com",
+        "availability_title": "Remote Work Availability",
+        "availability_description": "I am currently available for remote opportunities to develop similar stakeholder-driven applications using cutting-edge AI tools and modern tech stacks."
     }
 }

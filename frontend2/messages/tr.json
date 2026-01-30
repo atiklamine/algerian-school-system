@@ -183,5 +183,16 @@
         "logging_in": "Giriş yapılıyor...",
         "login_failed_creds": "Giriş başarısız. Lütfen bilgilerinizi kontrol edin.",
         "login_failed_try_again": "Giriş başarısız. Lütfen tekrar deneyin."
+    },
+    "about": {
+        "title": "Scholara Hakkında",
+        "description": "Scholara, Cezayir eğitim bağlamı için özel olarak tasarlanmış üst düzey bir okul yönetim sistemidir. Üç aylık (Trimestriel) değerlendirme sürecini, öğrenci yönetimini ve akademik raporlamayı kolaylaştırır.",
+        "creator_title": "Geliştirici Hakkında",
+        "creator_name": "Atik Lamine",
+        "creator_description": "Modern web teknolojileri ve yapay zeka destekli geliştirme konusunda uzmanlaşmış tutkulu bir yazılım mühendisi. Eğitim kurumları için verimli, premium çözümler oluşturmaya kendini adamıştır.",
+        "contact_me": "Bana Ulaşın",
+        "email": "atiklamine@gmail.com",
+        "availability_title": "Uzaktan Çalışma Uygunluğu",
+        "availability_description": "Şu anda en son yapay zeka araçlarını ve modern teknoloji yığınlarını kullanarak benzer paydaş odaklı uygulamalar geliştirmek için uzaktan çalışma fırsatlarına hazırım."
     }
 }

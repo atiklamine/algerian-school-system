@@ -183,5 +183,16 @@
         "logging_in": "Anmeldung läuft...",
         "login_failed_creds": "Anmeldung fehlgeschlagen. Bitte überprüfen Sie Ihre Zugangsdaten.",
         "login_failed_try_again": "Anmeldung fehlgeschlagen. Bitte versuchen Sie es erneut."
+    },
+    "about": {
+        "title": "Über Scholara",
+        "description": "Scholara ist ein High-End-Schulverwaltungssystem, das speziell für den algerischen Bildungskontext entwickelt wurde. Es optimiert den vierteljährlichen (Trimestriel) Bewertungsprozess, die Schülerverwaltung und die akademische Berichterstattung.",
+        "creator_title": "Über den Schöpfer",
+        "creator_name": "Atik Lamine",
+        "creator_description": "Ein leidenschaftlicher Softwareentwickler, der sich auf moderne Webtechnologien und KI-gestützte Entwicklung spezialisiert hat. Er widmet sich der Entwicklung effizienter, erstklassiger Lösungen für Bildungseinrichtungen.",
+        "contact_me": "Kontaktiere mich",
+        "email": "atiklamine@gmail.com",
+        "availability_title": "Verfügbarkeit für Remote-Arbeit",
+        "availability_description": "Ich stehe derzeit für Remote-Möglichkeiten zur Verfügung, um ähnliche Stakeholder-gesteuerte Anwendungen mit modernsten KI-Tools und modernen Tech-Stacks zu entwickeln."
     }
 }

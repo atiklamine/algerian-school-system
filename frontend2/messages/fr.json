@@ -181,7 +181,7 @@
         },
         "academic_years": {
             "title": "Années Scolaires",
-            "description": "Gérer les années scolaires et l'année en cours",
+            "description": "Gérer les années scolaires et l' année en cours",
             "current": "Actuelle",
             "edit_title": "Modifier l'Année",
             "create_title": "Nouvelle Année",
@@ -203,5 +203,16 @@
         "logging_in": "Connexion en cours...",
         "login_failed_creds": "Échec de la connexion. Veuillez vérifier vos identifiants.",
         "login_failed_try_again": "Échec de la connexion. Veuillez réessayer."
+    },
+    "about": {
+        "title": "À propos de Scholara",
+        "description": "Scholara est un système de gestion scolaire haut de gamme conçu spécifiquement pour le contexte éducatif algérien. Il simplifie le processus d'évaluation trimestrielle, la gestion des étudiants et les rapports académiques.",
+        "creator_title": "À propos du Créateur",
+        "creator_name": "Atik Lamine",
+        "creator_description": "Un ingénieur logiciel passionné spécialisé dans les technologies web modernes et le développement assisté par l'IA. Dédié à la création de solutions efficaces et premium pour les institutions éducatives.",
+        "contact_me": "Me Contacter",
+        "email": "atiklamine@gmail.com",
+        "availability_title": "Disponibilité pour le travail à distance",
+        "availability_description": "Je suis actuellement disponible pour des opportunités à distance afin de développer des applications similaires basées sur les parties prenantes, en utilisant des outils d'IA de pointe et des stacks technologiques modernes."
     }
 }
