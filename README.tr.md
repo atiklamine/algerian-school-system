@@ -55,8 +55,7 @@ Cezayir eğitim bağlamında okul değerlendirmelerini ve akademik verileri yön
 Bu proje, en son yapay zeka araçlarını kullanarak premium çözümler oluşturma konusunda uzmanlaşmış tutkulu bir yazılım mühendisi olan **Atik Lamine** tarafından geliştirilmiştir.
 
 - **E-posta**: atiklamine@gmail.com
-- **Uygunluk**: Şu anda en son yapay zeka teknolojilerini kullanarak benzer uygulamalar geliştirmek için uzaktan çalışma fırsatlarına hazırım.
-
+- **Uygunluk**: En son yapay zeka teknolojilerini kullanarak akıllı uygulamalar tasarlamak için şu anda müsaitim. Fikirlerinizi en yüksek yenilik ve verimlilik standartlarıyla somut gerçeğe dönüştüren ileri düzey dijital çözümler geliştirmek için uzaktan çalışıyorum.
 ---
 
 ## 📄 Lisans
