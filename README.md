@@ -63,7 +63,7 @@ A comprehensive web application designed for managing school evaluations and aca
 This project is developed by **Atik Lamine**, a passionate Software Engineer focused on building high-end, premium solutions using cutting-edge AI tools.
 
 - **Email**: atiklamine@gmail.com
-- **Availability**: I am currently available for remote work to develop similar stakeholder-driven applications using modern tech stacks and AI-powered workflows.
+- **Availability**: Currently available to design intelligent applications using the latest AI technologies, working remotely to develop advanced digital solutions that transform your ideas into tangible reality with the highest standards of innovation and efficiency.
 
 ---
 
