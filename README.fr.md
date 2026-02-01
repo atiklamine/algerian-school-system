@@ -55,7 +55,7 @@ Une application web complète conçue pour gérer les évaluations scolaires et 
 Ce projet a été développé par **Atik Lamine**, un ingénieur logiciel passionné spécialisé dans la création de solutions premium à l'aide d'outils d'IA de pointe.
 
 - **Email** : atiklamine@gmail.com
-- **Disponibilité** : Je suis actuellement disponible pour du travail à distance afin de développer des applications similaires à l'aide des dernières technologies d'IA.
+- **Disponibilité** : Actuellement disponible pour concevoir des applications intelligentes en utilisant les dernières technologies d'IA, et je travaille à distance pour développer des solutions numériques avancées qui transforment vos idées en réalité tangible avec les plus hauts standards d'innovation et d'efficacité.
 
 ---
 
