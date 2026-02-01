@@ -55,7 +55,7 @@ D asnas n uweb ummid yettwasunfen i usefrek n yikayaden n uɣerbaz d yisalan n t
 Asenfar-a yettwasunf-it-id **Atik Lamine**, d amsekni n yiseɣzanen i iḥemmlen asnulfu n ttawilat n premium s n ttawilat n AI amiran.
 
 - **Imayl**: atiklamine@gmail.com
-- **Tilawt**: Lliɣ tura i uxeddim si lbeɛid i wakken ad bnuɣ ttawilat yecban wagi s ttawilat n AI amiran.
+- **Tilawt**: ⵔ ⵙⵖⵔⵓⵙ ⴰⴷ ⵙⵏⵓⵍⵖⴰⵏ ⵜⵉⵡⵡⵓⵔⵉⵏ ⵜⵉⵎⴰⵜⵓⵜⵉⵏ ⵙⴳ ⵜⵉⵡⵡⵓⵔⵉⵏ ⵜⵉⵎⴰⵢⵏⵓⵜⵉⵏ ⵏ ⵜⴰⵙⵏⵏⴰ ⵜⴰⵎⴰⵜⵓⵜ, ⴰⵔ ⵜⵜⵓⵙⵙⵉⵖ ⵎⴰⵏⴷⴰ ⵓⵔ ⵙⵏⵓⵍⵖⴰⵏ ⵜⵉⵙⵖⴰⵍⴷⴰ ⵜⵉⵎⴰⵢⵏⵓⵜⵉⵏ ⵉⵍⵍⵉ ⵙⵏⵓⵍⵖⵏⵜ ⵜⵉⴳⵎⵉⴷⴰⵏⵏⴰⵜ ⵏⵏⵖ ⵙ ⵜⵉⵣⵎⴰⵔⵏ ⵜⵉⵎⴰⵢⵏⵓⵜⵉⵏ ⵉⵍⵍⵉ ⵜⵜⵓⵔⵓⵏ ⵜⵉⴳⵎⵉⴷⴰⵏⵏⴰⵜ ⵏⵏⵖ ⵙ ⵜⴰⵎⵓⵜⴰ ⵉⵍⵍⵉ ⵜⵙⵙⵏⵉⴷⴰ ⵙⴳ ⵉⴷⵙⵏ ⵏ ⵓⵙⵔⴷⵉⵡ ⴰⵔ ⵜⵓⵙⵔⴷⵉⵜ.
 
 ---
 
